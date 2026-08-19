@@ -42,6 +42,125 @@ export default function CtrlBrewedLandingPage() {
     "Mocha",
   ];
 
+  const milkTea = [
+    {
+      name: "Classic Milk Tea",
+      price16oz: 89,
+      price22oz: 109,
+    },
+    {
+      name: "Matcha Milk Tea",
+      price16oz: 99,
+      price22oz: 119,
+    },
+    {
+      name: "Chocolate Milk Tea",
+      price16oz: 99,
+      price22oz: 119,
+    },
+    {
+      name: "Strawberry Milk Tea",
+      price16oz: 99,
+      price22oz: 119,
+    },
+  ];
+
+  const milkTeaFrappes = [
+    {
+      name: "Strawberry Milk Tea Frappe",
+      price16oz: 189,
+      price22oz: 219,
+    },
+    {
+      name: "Matcha Milk Tea Frappe",
+      price16oz: 199,
+      price22oz: 229,
+    },
+    {
+      name: "Chocolate Milk Tea Frappe",
+      price16oz: 209,
+      price22oz: 239,
+    },
+    {
+      name: "Cookies & Cream Frappe",
+      price16oz: 209,
+      price22oz: 239,
+    },
+  ];
+
+  const milkshakes = [
+    {
+      name: "Strawberry Milkshake",
+      price16oz: 149,
+      price22oz: 179,
+    },
+    {
+      name: "Matcha Milkshake",
+      price16oz: 149,
+      price22oz: 179,
+    },
+    {
+      name: "Chocolate Milkshake",
+      price16oz: 149,
+      price22oz: 179,
+    },
+    {
+      name: "Cookies & Cream Milkshake",
+      price16oz: 159,
+      price22oz: 189,
+    },
+  ];
+
+  const combos = [
+    {
+      name: "Milk Tea Duo",
+      price: 189,
+    },
+    {
+      name: "Milkshake Duo",
+      price: 289,
+    },
+    {
+      name: "Frappe Duo",
+      price: 369,
+    },
+    {
+      name: "Frappe & Tea",
+      price: 259,
+    },
+    {
+      name: "Milkshake Barkada",
+      price: 586,
+    },
+    {
+      name: "Barkada 4",
+      price: 349,
+    },
+    {
+      name: "Frappe Barkada",
+      price: 699,
+    },
+    {
+      name: "Couples Treat",
+      price: 549,
+    },
+  ];
+
+  const addOns = [
+    {
+      name: "Chocolate Drizzle",
+      price: 15,
+    },
+    {
+      name: "Caramel Drizzle",
+      price: 15,
+    },
+    {
+      name: "Extra Sprinkles",
+      price: 10,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#1B120D] text-white overflow-hidden relative font-sans">
       {/* Background Effects */}
@@ -85,9 +204,7 @@ export default function CtrlBrewedLandingPage() {
             <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6">
               CTRL<span className="text-orange-400">+</span>
               <br />
-              <span className="text-orange-200 italic font-light">
-                BREWED
-              </span>
+              <span className="text-orange-200 italic font-light">BREWED</span>
             </h1>
 
             <p className="text-lg text-gray-300 leading-relaxed max-w-xl mb-10">
@@ -124,7 +241,7 @@ export default function CtrlBrewedLandingPage() {
 
             <div className="relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-[40px] p-5 shadow-2xl hover:-translate-y-2 transition-all duration-500">
               <img
-                src="/logo/logo.jpg"
+                src={`${import.meta.env.BASE_URL}logo/logo.jpg`}
                 alt="CTRL+BREWED"
                 className="rounded-[28px] w-full object-cover"
               />
@@ -185,73 +302,133 @@ export default function CtrlBrewedLandingPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Cold Coffee",
-                size: "16oz • 22oz",
-                price: "₱59 • ₱69",
-                items: coldCoffee,
-              },
-              {
-                title: "Non-Coffee",
-                size: "16oz • 22oz",
-                price: "₱59 • ₱69",
-                items: nonCoffee,
-              },
-              {
-                title: "Soda Series",
-                size: "16oz • 22oz",
-                price: "₱49 • ₱59",
-                items: sodaSeries,
-              },
-              {
-                title: "Hot Coffee",
-                size: "8oz • 16oz",
-                price: "₱69 • ₱79",
-                items: hotCoffee,
-              },
-            ].map((section) => (
-              <motion.div
-                whileHover={{ y: -6 }}
-                key={section.title}
-                className="group bg-white/5 border border-white/10 rounded-[32px] p-8 backdrop-blur-xl hover:border-orange-300/20 transition-all duration-300"
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <div>
-                    <h3 className="text-3xl font-bold text-orange-300 mb-2">
-                      {section.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm">{section.size}</p>
+            {/* Cold Coffee */}
+            <MenuSection
+              title="Cold Coffee"
+              size="16oz • 22oz"
+              price="₱59 • ₱69"
+              items={coldCoffee}
+            />
+
+            {/* Non-Coffee */}
+            <MenuSection
+              title="Non-Coffee"
+              size="16oz • 22oz"
+              price="₱59 • ₱69"
+              items={nonCoffee}
+            />
+
+            {/* Soda Series */}
+            <MenuSection
+              title="Soda Series"
+              size="16oz • 22oz"
+              price="₱49 • ₱59"
+              items={sodaSeries}
+            />
+
+            {/* Hot Coffee */}
+            <MenuSection
+              title="Hot Coffee"
+              size="8oz • 16oz"
+              price="₱69 • ₱79"
+              items={hotCoffee}
+            />
+
+            {/* Milk Tea */}
+            <MenuSection
+              title="Milk Tea"
+              size="16oz • 22oz"
+              items={milkTea}
+              variablePrice
+            />
+
+            {/* Milk Tea Frappes */}
+            <MenuSection
+              title="Milk Tea Frappes"
+              size="16oz • 22oz"
+              items={milkTeaFrappes}
+              variablePrice
+            />
+
+            {/* Milkshakes */}
+            <MenuSection
+              title="Milkshakes"
+              size="16oz • 22oz"
+              items={milkshakes}
+              variablePrice
+            />
+
+            {/* Combos */}
+            <motion.div
+              whileHover={{ y: -6 }}
+              className="group bg-white/5 border border-white/10 rounded-[32px] p-8 backdrop-blur-xl hover:border-orange-300/20 transition-all duration-300"
+            >
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h3 className="text-3xl font-bold text-orange-300 mb-2">
+                    Combos
+                  </h3>
+
+                  <p className="text-gray-400 text-sm">Perfect for sharing</p>
+                </div>
+
+                <span className="bg-orange-400/20 text-orange-200 px-4 py-2 rounded-full text-sm">
+                  Best Value
+                </span>
+              </div>
+
+              <div className="space-y-4">
+                {combos.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex items-center justify-between gap-4 border-b border-white/5 pb-4 hover:translate-x-2 transition-all duration-300"
+                  >
+                    <span className="text-lg text-gray-100">{item.name}</span>
+
+                    <span className="font-semibold text-orange-200 whitespace-nowrap">
+                      ₱{item.price}
+                    </span>
                   </div>
+                ))}
+              </div>
+            </motion.div>
 
-                  <span className="bg-orange-400/20 text-orange-200 px-4 py-2 rounded-full text-sm">
-                    Best Seller
-                  </span>
+            {/* Add-ons */}
+            <motion.div
+              whileHover={{ y: -6 }}
+              className="group bg-white/5 border border-white/10 rounded-[32px] p-8 backdrop-blur-xl hover:border-orange-300/20 transition-all duration-300"
+            >
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h3 className="text-3xl font-bold text-orange-300 mb-2">
+                    Add-ons
+                  </h3>
+
+                  <p className="text-gray-400 text-sm">Customize your drink</p>
                 </div>
 
-                <div className="space-y-4">
-                  {section.items.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center justify-between border-b border-white/5 pb-4 hover:translate-x-2 transition-all duration-300"
-                    >
-                      <span className="text-lg text-gray-100">{item}</span>
+                <span className="bg-orange-400/20 text-orange-200 px-4 py-2 rounded-full text-sm">
+                  Extras
+                </span>
+              </div>
 
-                      <span className="font-semibold text-orange-200">
-                        {section.price}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+              <div className="space-y-4">
+                {addOns.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex items-center justify-between border-b border-white/5 pb-4 hover:translate-x-2 transition-all duration-300"
+                  >
+                    <span className="text-lg text-gray-100">{item.name}</span>
+
+                    <span className="font-semibold text-orange-200">
+                      +₱{item.price}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
-          <div className="mt-10 bg-gradient-to-r from-orange-400/20 to-amber-200/10 border border-orange-200/10 rounded-[32px] p-7 text-center backdrop-blur-xl">
-            <p className="text-xl font-semibold text-orange-100">
-              Add-ons: Shot of Espresso +₱15
-            </p>
-          </div>
         </div>
       </section>
 
@@ -306,7 +483,7 @@ export default function CtrlBrewedLandingPage() {
 
               <p className="text-gray-300">Monday - Sunday</p>
               <p className="text-orange-200 text-lg font-semibold">
-                2:00 PM - 10:00 PM
+                1:00 PM - 10:00 PM
               </p>
             </div>
           </motion.div>
@@ -323,8 +500,7 @@ export default function CtrlBrewedLandingPage() {
               className="w-full h-[450px] rounded-[28px]"
               loading="lazy"
             ></iframe>
-
-             </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -343,12 +519,13 @@ export default function CtrlBrewedLandingPage() {
           CTRL+BREWED
         </h2>
 
-        <p className="mb-5 text-gray-500">
-          Code • Create • Connect
-        </p>
+        <p className="mb-5 text-gray-500">Code • Create • Connect</p>
 
         <div className="flex justify-center gap-5 mb-5">
-          <a href="https://www.facebook.com/profile.php?id=61563731111433" target="_blank">
+          <a
+            href="https://www.facebook.com/profile.php?id=61563731111433"
+            target="_blank"
+          >
             <FaFacebookF className="hover:text-orange-300 transition-all" />
           </a>
         </div>
@@ -358,5 +535,51 @@ export default function CtrlBrewedLandingPage() {
         </p>
       </footer>
     </div>
+  );
+}
+
+function MenuSection({ title, size, price, items, variablePrice = false }) {
+  return (
+    <motion.div
+      whileHover={{ y: -6 }}
+      className="group bg-white/5 border border-white/10 rounded-[32px] p-8 backdrop-blur-xl hover:border-orange-300/20 transition-all duration-300"
+    >
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h3 className="text-3xl font-bold text-orange-300 mb-2">{title}</h3>
+
+          <p className="text-gray-400 text-sm">{size}</p>
+        </div>
+
+        <span className="bg-orange-400/20 text-orange-200 px-4 py-2 rounded-full text-sm">
+          Best Seller
+        </span>
+      </div>
+
+      <div className="space-y-4">
+        {items.map((item) => {
+          const name = typeof item === "string" ? item : item.name;
+
+          return (
+            <div
+              key={name}
+              className="flex items-center justify-between gap-4 border-b border-white/5 pb-4 hover:translate-x-2 transition-all duration-300"
+            >
+              <span className="text-lg text-gray-100">{name}</span>
+
+              {variablePrice ? (
+                <span className="font-semibold text-orange-200 whitespace-nowrap">
+                  ₱{item.price16oz} • ₱{item.price22oz}
+                </span>
+              ) : (
+                <span className="font-semibold text-orange-200 whitespace-nowrap">
+                  {price}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
   );
 }
