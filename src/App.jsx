@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  FaFacebookF,
-  // FaInstagram,
-  FaMapMarkerAlt,
-  FaCoffee,
-} from "react-icons/fa";
+import { FaFacebookF, FaFacebookMessenger, FaCoffee } from "react-icons/fa";
 
 export default function CtrlBrewedLandingPage() {
   const coldCoffee = [
@@ -428,7 +423,6 @@ export default function CtrlBrewedLandingPage() {
               </div>
             </motion.div>
           </div>
-
         </div>
       </section>
 
@@ -506,11 +500,13 @@ export default function CtrlBrewedLandingPage() {
 
       {/* Floating Button */}
       <a
-        href="https://m.me"
+        href="https://m.me/61563731111433"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Message CTRL+BREWED on Messenger"
         className="fixed bottom-6 right-6 bg-orange-400 text-black p-5 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-50"
       >
-        <FaMapMarkerAlt size={22} />
+        <FaFacebookMessenger size={22} />
       </a>
 
       {/* Footer */}
